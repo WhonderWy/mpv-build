@@ -2,7 +2,7 @@
 # A file that installs all dependencies I could find to build in an Arch Linux environment.
 
 echo "Updating all packages"
-sudo pacman -Syu
+sudo pacman -Syuu
 
 printf "%s\n" --enable-nonfree    >> ffmpeg_options
 printf "%s\n" --enable-libx264    >> ffmpeg_options
@@ -21,6 +21,7 @@ sudo pacman -S ${pacman_packages[*]}
 
 echo "Downloading extra dependencies"
 pipx install meson yt-dlp mitmproxy ffmpeg docutils pillow
+pipx upgrade-all
 
 echo "Building..."
 ./rebuild -j4
