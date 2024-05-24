@@ -23,6 +23,13 @@ echo "Downloading extra dependencies"
 pipx install meson yt-dlp mitmproxy ffmpeg docutils pillow
 pipx upgrade-all
 
+git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
+cd nv-codec-headers
+make
+sudo make install
+
+cd ~/git/mpv-build
+
 echo "Building..."
 ./rebuild -j4
 
